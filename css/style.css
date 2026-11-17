@@ -1,0 +1,276 @@
+
+/* 1. 全站設計變數 */
+:root {
+  --primary-color: #2563eb;
+  --text-color: #1e293b;
+  --background-color: #f8fafc;
+  --card-color: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+/* 2. 統一元素尺寸計算方式 */
+* {
+  box-sizing: border-box;
+}
+
+/* 3. 網站基礎樣式 */
+body {
+  margin: 0;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.7;
+}
+
+/* 4. 連結基礎樣式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+
+/* 5. 網站共用內容容器 */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* 6. 文章卡片樣式 */
+.article-card {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* 7. 文章卡片排列 */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 260px), 1fr)
+  );
+  gap: 24px;
+}
+
+/* 8. 首頁介紹區塊 */
+.hero {
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* 9. 文章列表標題 */
+main section > h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+main section > p {
+  color: #64748b;
+  margin-bottom: 32px;
+}
+
+/* 10. 卡片內部排版 */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.article-card h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.article-card p {
+  color: #475569;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.article-card a {
+  margin-top: auto;
+  font-weight: 600;
+}
+
+.article-card a:hover {
+  text-decoration: underline;
+}
+
+/* 11. 頁尾 */
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--border-color);
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* 12. 手機版標題調整 */
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
+
+
+/* 13. 文章頁首 */
+.article-header {
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.article-header h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.article-header p {
+  color: #64748b;
+  font-size: 18px;
+}
+
+/* 14. 文章內容 */
+.article-content {
+  max-width: 850px;
+}
+
+.article-content section {
+  margin-bottom: 48px;
+}
+
+.article-content h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.article-content h3 {
+  font-size: 20px;
+  margin-top: 24px;
+}
+
+.article-content p {
+  color: #475569;
+  line-height: 1.9;
+}
+
+/* 15. 文章頁面手機版 */
+@media (max-width: 600px) {
+  .article-header h1 {
+    font-size: 28px;
+  }
+
+  .article-content h2 {
+    font-size: 22px;
+  }
+}
+
+
+/* 16. LLM 運作流程圖 */
+.process-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px 0;
+  gap: 8px;
+}
+
+.process-step {
+  width: 100%;
+  max-width: 440px;
+  padding: 16px 20px;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  color: #1e40af;
+  text-align: center;
+  font-weight: 600;
+}
+
+.process-arrow {
+  color: var(--primary-color);
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* 17. 文章列表與連結 */
+.article-content ul {
+  padding-left: 24px;
+  line-height: 1.9;
+  color: #475569;
+}
+
+.article-content li {
+  margin-bottom: 12px;
+}
+
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* 18. 文章比較表格 */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-color);
+}
+
+.article-content th,
+.article-content td {
+  border: 1px solid var(--border-color);
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-content th {
+  background-color: #eff6ff;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.article-content td {
+  color: #475569;
+}
+
+.article-content tr:nth-child(even) {
+  background-color: #f8fafc;
+}
