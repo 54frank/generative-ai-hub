@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="學習提示詞工程的基本概念、核心技巧、實際應用與限制，了解如何有效與生成式 AI 溝通。">
+
+  <title>提示詞工程 | Generative AI Knowledge Hub</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <header class="container article-header">
+
+    <a href="../index.html" class="back-link">
+      ← 返回首頁
+    </a>
+
+    <h1>提示詞工程（Prompt Engineering）</h1>
+
+    <p>
+      學習如何設計清楚、具體且有結構的提示詞，
+      提升生成式 AI 回應的品質與實用性。
+    </p>
+
+  </header>
+
+  <main class="container article-content">
+
+    <article>
+
+      <!-- 第一章 -->
+      <section>
+        <h2>1. 技術簡介</h2>
+
+        <p>
+          提示詞工程（Prompt Engineering）
+          是指透過設計、調整與測試輸入給 AI 模型的指令，
+          引導模型產生更符合需求的回應。
+        </p>
+
+        <p>
+          例如，直接要求 AI「幫我寫一份報告」，
+          可能得到內容過於籠統的結果。
+          如果進一步說明報告主題、目標讀者、
+          字數與輸出格式，就能讓 AI 更清楚理解任務。
+        </p>
+      </section>
+
+      <!-- 第二章 -->
+      <section>
+        <h2>2. 為什麼需要這項技術？</h2>
+
+        <p>
+          大型語言模型能處理自然語言，
+          但當使用者提供的資訊不足或指令模糊時，
+          模型可能產生不符合預期的內容。
+        </p>
+
+        <p>
+          提示詞工程的目的，是降低需求表達上的模糊性，
+          讓模型理解任務背景、執行目標及結果限制。
+        </p>
+
+        <p>
+          對企業而言，良好的提示詞設計
+          有助於建立較一致的客服回覆、
+          行銷文案與文件整理流程。
+        </p>
+      </section>
+
+      <!-- 第三章 -->
+      <section>
+        <h2>3. 核心原理與運作方式</h2>
+
+        <p>
+          提示詞工程通常會透過明確的任務說明、
+          背景資訊、限制條件及輸出格式，
+          協助模型掌握使用者的需求。
+        </p>
+
+        <h3>提示詞的四個常見要素</h3>
+
+        <ul>
+          <li>
+            <strong>任務（Task）：</strong>
+            明確說明希望 AI 完成什麼工作。
+          </li>
+
+          <li>
+            <strong>背景（Context）：</strong>
+            提供與任務相關的情境及資訊。
+          </li>
+
+          <li>
+            <strong>限制（Constraints）：</strong>
+            說明字數、語氣、範圍或其他要求。
+          </li>
+
+          <li>
+            <strong>輸出格式（Output Format）：</strong>
+            指定表格、條列或段落等呈現方式。
+          </li>
+        </ul>
+
+        <h3>普通提示詞與結構化提示詞比較</h3>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>比較項目</th>
+                <th>普通提示詞</th>
+                <th>結構化提示詞</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>指令內容</td>
+                <td>幫我介紹 RAG</td>
+                <td>
+                  向 AI 初學者介紹 RAG，
+                  使用繁體中文，分成概念、
+                  流程與案例三部分
+                </td>
+              </tr>
+
+              <tr>
+                <td>目標讀者</td>
+                <td>未指定</td>
+                <td>AI 初學者</td>
+              </tr>
+
+              <tr>
+                <td>輸出格式</td>
+                <td>未指定</td>
+                <td>三個段落</td>
+              </tr>
+
+              <tr>
+                <td>結果可控性</td>
+                <td>較低</td>
+                <td>通常較高</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          除了提供明確指令，也可以使用
+          Few-shot Prompting（少樣本提示），
+          透過提供少量範例，讓模型理解預期的輸出模式。
+        </p>
+
+        <p>
+          需要注意的是，提示詞工程無法保證
+          模型每次都產生正確答案，
+          仍需要根據實際結果反覆測試與修正。
+        </p>
+      </section>
+
+      <!-- 第四章 -->
+      <section>
+        <h2>4. 實際應用案例</h2>
+
+        <h3>行銷文案生成</h3>
+
+        <p>
+          行銷人員可以指定產品特色、
+          目標客群與品牌語氣，
+          讓 AI 協助產生符合行銷需求的文案草稿。
+        </p>
+
+        <h3>企業客服</h3>
+
+        <p>
+          企業可以透過標準化提示詞，
+          指定客服回覆的語氣、格式與處理原則，
+          改善回覆的一致性。
+        </p>
+
+        <h3>資料分析輔助</h3>
+
+        <p>
+          使用者可以要求 AI 依照指定格式
+          解釋分析結果、整理關鍵指標，
+          並區分資料事實與推論。
+        </p>
+      </section>
+
+      <!-- 第五章 -->
+      <section>
+        <h2>5. 優勢與限制</h2>
+
+        <h3>優勢</h3>
+
+        <ul>
+          <li>降低任務指令的模糊程度。</li>
+          <li>提升輸出格式與內容的一致性。</li>
+          <li>不一定需要重新訓練模型。</li>
+          <li>能應用於多種企業工作情境。</li>
+        </ul>
+
+        <h3>限制</h3>
+
+        <ul>
+          <li>提示詞改善不代表內容一定正確。</li>
+          <li>不同模型可能對相同提示詞產生不同結果。</li>
+          <li>複雜提示詞需要持續測試與維護。</li>
+          <li>無法單靠提示詞解決所有知識不足或資料過時問題。</li>
+        </ul>
+      </section>
+
+      <!-- 第六章 -->
+      <section>
+        <h2>6. 延伸學習</h2>
+
+        <p>
+          建議進一步了解 Zero-shot Prompting、
+          Few-shot Prompting 與結構化輸出，
+          並實際比較不同提示詞的生成結果。
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://platform.openai.com/docs/guides/prompt-engineering"
+               target="_blank" rel="noopener noreferrer">
+              OpenAI Prompt Engineering Guide
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.promptingguide.ai/"
+               target="_blank" rel="noopener noreferrer">
+              Prompt Engineering Guide
+            </a>
+          </li>
+
+          <li>
+            <a href="rag.html">
+              下一篇：檢索增強生成（RAG）
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </article>
+
+  </main>
+
+  <footer class="container">
+
+    <p>© 2026 Generative AI Knowledge Hub</p>
+
+    <a href="../index.html">返回首頁</a>
+
+  </footer>
+
+</body>
+</html>
