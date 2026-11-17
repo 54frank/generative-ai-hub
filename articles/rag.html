@@ -1,1 +1,276 @@
 
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="認識檢索增強生成（RAG）的基本概念、運作流程、企業應用、優勢與限制。">
+
+  <title>檢索增強生成（RAG） | Generative AI Knowledge Hub</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <header class="container article-header">
+
+    <a href="../index.html" class="back-link">
+      ← 返回首頁
+    </a>
+
+    <h1>檢索增強生成（RAG）</h1>
+
+    <p>
+      了解如何結合外部知識檢索與大型語言模型，
+      讓 AI 回答具有更充分的資訊依據。
+    </p>
+
+  </header>
+
+  <main class="container article-content">
+
+    <article>
+
+      <!-- 第一章 -->
+      <section>
+        <h2>1. 技術簡介</h2>
+
+        <p>
+          檢索增強生成（Retrieval-Augmented Generation，RAG）
+          是一種結合資訊檢索與生成式 AI 的技術架構。
+        </p>
+
+        <p>
+          傳統大型語言模型主要依賴訓練過程學到的資訊，
+          而 RAG 可以在回答問題前，
+          先從外部知識來源尋找相關內容，
+          再將檢索結果提供給語言模型生成答案。
+        </p>
+
+        <p>
+          例如，員工詢問公司的最新請假規定時，
+          RAG 系統可以先搜尋企業內部的人事文件，
+          再根據找到的規定產生回應。
+        </p>
+      </section>
+
+      <!-- 第二章 -->
+      <section>
+        <h2>2. 為什麼需要這項技術？</h2>
+
+        <p>
+          大型語言模型的知識可能受到訓練資料與更新時間限制，
+          因此不一定知道企業最新的內部規範或產品資訊。
+        </p>
+
+        <p>
+          此外，當模型缺乏足夠資訊時，
+          可能產生看似合理但實際不正確的回答，
+          這種現象稱為幻覺（Hallucination）。
+        </p>
+
+        <p>
+          RAG 透過提供與問題相關的外部資料，
+          讓模型能根據具體內容回答問題，
+          有機會降低缺乏資訊依據所造成的錯誤。
+        </p>
+
+        <p>
+          對企業而言，RAG 也提供一種利用內部知識的方式，
+          不一定需要重新訓練整個大型語言模型。
+        </p>
+      </section>
+
+      <!-- 第三章 -->
+      <section>
+        <h2>3. 核心原理與運作方式</h2>
+
+        <p>
+          RAG 通常包含兩個主要階段：
+          知識準備與問題回答。
+        </p>
+
+        <h3>第一階段：知識準備</h3>
+
+        <p>
+          系統先收集企業文件、產品說明或其他知識資料，
+          將長篇內容切分成較小的文字區塊（Chunks）。
+        </p>
+
+        <p>
+          接著可以透過 Embedding（向量嵌入）
+          將文字轉換成數值向量，
+          並儲存在向量資料庫中，
+          方便後續進行語意相似度搜尋。
+        </p>
+
+        <h3>第二階段：問題回答</h3>
+
+        <p>
+          當使用者提出問題時，
+          系統會先檢索與問題相關的文件內容，
+          再將這些內容與使用者問題一起提供給 LLM，
+          由模型生成最終答案。
+        </p>
+
+        <h3>RAG 運作流程圖</h3>
+
+        <div class="process-flow">
+
+          <div class="process-step">
+            使用者提出問題
+          </div>
+
+          <div class="process-arrow">↓</div>
+
+          <div class="process-step">
+            檢索外部知識庫
+          </div>
+
+          <div class="process-arrow">↓</div>
+
+          <div class="process-step">
+            取得相關文件片段
+          </div>
+
+          <div class="process-arrow">↓</div>
+
+          <div class="process-step">
+            整合問題與檢索內容
+          </div>
+
+          <div class="process-arrow">↓</div>
+
+          <div class="process-step">
+            LLM 生成回答
+          </div>
+
+          <div class="process-arrow">↓</div>
+
+          <div class="process-step">
+            回傳答案與可用的來源資訊
+          </div>
+
+        </div>
+
+        <p>
+          需要注意的是，RAG 不一定只能使用向量資料庫。
+          實際系統也可能採用關鍵字搜尋、
+          混合檢索或重新排序（Reranking）
+          等方法改善資料檢索品質。
+        </p>
+      </section>
+
+      <!-- 第四章 -->
+      <section>
+        <h2>4. 實際應用案例</h2>
+
+        <h3>企業內部知識管理</h3>
+
+        <p>
+          員工可以透過自然語言查詢企業內部文件，
+          例如人事規章、作業流程與技術手冊，
+          降低人工搜尋資料的時間成本。
+        </p>
+
+        <h3>電商商品智慧客服</h3>
+
+        <p>
+          電商平台可以將商品規格、退換貨政策
+          與常見問題建立成知識庫，
+          讓 AI 根據相關資料回答顧客問題。
+        </p>
+
+        <h3>研究文件問答</h3>
+
+        <p>
+          研究人員可以使用 RAG 系統
+          搜尋指定論文或研究報告，
+          再根據檢索到的段落整理重點。
+        </p>
+      </section>
+
+      <!-- 第五章 -->
+      <section>
+        <h2>5. 優勢與限制</h2>
+
+        <h3>優勢</h3>
+
+        <ul>
+          <li>可以整合企業內部或外部知識來源。</li>
+          <li>知識庫更新後，系統有機會使用較新的資訊。</li>
+          <li>可搭配來源引用，提高答案的可追溯性。</li>
+          <li>不一定需要重新訓練大型語言模型。</li>
+        </ul>
+
+        <h3>限制</h3>
+
+        <ul>
+          <li>若檢索結果不相關，生成答案的品質可能下降。</li>
+          <li>文件切分與檢索策略會影響系統表現。</li>
+          <li>增加檢索流程可能提高系統延遲與維護成本。</li>
+          <li>即使提供外部資料，模型仍可能產生錯誤回答。</li>
+          <li>企業必須管理文件存取權限與機敏資訊。</li>
+        </ul>
+
+        <p>
+          因此，RAG 系統除了評估生成品質，
+          也需要衡量檢索準確性、來源可信度、
+          回答延遲及資料安全性。
+        </p>
+      </section>
+
+      <!-- 第六章 -->
+      <section>
+        <h2>6. 延伸學習</h2>
+
+        <p>
+          建議進一步了解 Embedding、
+          Vector Database（向量資料庫）、
+          Semantic Search（語意搜尋）
+          與 Reranking（重新排序）。
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://arxiv.org/abs/2005.11401"
+               target="_blank" rel="noopener noreferrer">
+              Retrieval-Augmented Generation for
+              Knowledge-Intensive NLP Tasks
+            </a>
+          </li>
+
+          <li>
+            <a href="https://python.langchain.com/docs/"
+               target="_blank" rel="noopener noreferrer">
+              LangChain Documentation
+            </a>
+          </li>
+
+          <li>
+            <a href="llm.html">
+              延伸閱讀：大型語言模型（LLM）
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </article>
+
+  </main>
+
+  <footer class="container">
+
+    <p>© 2026 Generative AI Knowledge Hub</p>
+
+    <a href="../index.html">返回首頁</a>
+
+  </footer>
+
+</body>
+</html>
+
