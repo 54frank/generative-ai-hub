@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="從生活中的助理認識 AI Agent，了解它與 LLM 的差異，以及工具使用、規劃、反思與實際應用限制。">
+
+  <title>AI Agent（人工智慧代理人） | Generative AI Knowledge Hub</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <!-- 文章頁首 -->
+  <header class="container article-header">
+
+    <a href="../index.html" class="back-link">
+      ← 返回首頁
+    </a>
+
+    <h1>AI Agent（人工智慧代理人）</h1>
+
+    <p>從生活中的助理認識 AI Agent，了解它與 LLM 的差異，以及工具使用、規劃、反思與實際應用限制。</p>
+
+  </header>
+
+  <!-- 文章主要內容 -->
+  <main class="container article-content">
+
+    <article>
+
+      <section>
+        <h2>1. 技術簡介</h2>
+        <p>想像你請一位助理整理訂單問題：他會先查訂單、確認配送狀態，再整理處理建議；遇到退款則交由你確認。這比只回答「如何查訂單」多了實際查詢與後續處理。
+        </p>
+        <p>
+          人工智慧代理人（AI Agent）是一種能依據目標與執行結果，在授權範圍內選擇下一步行動的系統。本文聚焦使用大型語言模型（Large Language Model，LLM）的代理人；LLM 是從大量文字資料學習語言模式、依上下文生成內容的模型。
+        </p>
+        <p>
+          LLM 可作為理解需求與選擇行動的核心，代理人系統則另外整合工具、執行紀錄、權限與停止規則。「Agent」的定義並不完全一致，也不是每個代理人都具備相同的自主程度。</p>
+      </section>
+
+      <section>
+        <h2>2. 為什麼需要這項技術？</h2>
+        <p>單次文字回應適合解釋概念或撰寫草稿，但查詢訂單再追蹤配送，可能需要多次操作，且下一步會隨查詢結果改變。AI Agent 可以協助串接這些步驟，減少人在不同系統間搬移資訊的工作。
+        </p>
+        <p>
+          若工作步驟固定，預先寫好的自動化流程通常更容易預測；若只是摘要一段文字，單次模型回應可能已足夠。需要依情況調整行動時，才值得考慮代理人增加的成本與複雜度。</p>
+      </section>
+
+      <section>
+        <h2>3. 核心原理與運作方式</h2>
+        <p>可以把 LLM 想成協助判讀與提出行動的核心，把工具想成查資料或操作系統的管道。模型提出工具名稱與所需資料後，由系統檢查權限並執行，再把結果交回模型，作為下一步判斷的依據。
+        </p>
+        <h3>三個常見能力</h3>
+        <ul>
+          <li><strong>工具使用（Tool Use）：</strong>透過搜尋、計算機或訂單查詢等外部功能取得資訊或執行動作。例如，查詢物流工具才能取得目前配送狀態；模型本身不會憑空知道即時資料。</li>
+          <li><strong>規劃（Planning）：</strong>將目標拆成可執行步驟，並依結果調整。例如先確認訂單，再查配送；若缺少訂單編號，先向使用者詢問。</li>
+          <li><strong>反思（Reflection）：</strong>根據工具回傳、檢查規則或人工意見，檢視結果並修正。例如發現回覆沒有附查詢時間，就補上紀錄。自我檢查仍可能漏錯，也不等於模型會自動重新訓練或永久學會新知。</li>
+        </ul>
+        <p>上述能力是常見設計方式，並非每個 AI Agent 都必須有獨立的規劃或反思模組。</p>
+        <h3>LLM 與 AI Agent 的差異</h3>
+        <div class="table-wrapper">
+          <table>
+            <caption>以單次文字回應與具工具的代理人系統比較</caption>
+            <thead><tr><th scope="col">比較項目</th><th scope="col">單次 LLM 回應</th><th scope="col">AI Agent 系統</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">主要工作</th><td>依輸入生成內容</td><td>朝目標選擇行動，並依回饋繼續處理</td></tr>
+              <tr><th scope="row">訂單範例</th><td>說明查詢訂單的方法</td><td>使用授權工具查訂單，再依結果整理建議</td></tr>
+              <tr><th scope="row">外部操作</th><td>單靠模型不會執行外部操作</td><td>由系統執行經權限檢查的工具請求</td></tr>
+              <tr><th scope="row">結束方式</th><td>生成此次回應後結束</td><td>完成、需人工協助，或達到時間與步數上限時停止</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>兩者並非互斥：LLM 可以是 AI Agent 的組成部分；替模型加入一個工具，也不必然代表它已能自主處理多步任務。</p>
+        <h3 id="agent-flow-title">AI Agent 運作流程</h3>
+        <div class="process-flow" role="group" aria-labelledby="agent-flow-title">
+          <div class="process-step">1. 接收目標，確認所需資訊與授權範圍</div>
+          <div class="process-arrow" aria-hidden="true">↓</div>
+          <div class="process-step">2. 規劃下一步，選擇合適工具</div>
+          <div class="process-arrow" aria-hidden="true">↓</div>
+          <div class="process-step">3. 系統檢查權限；需確認的動作先交由人工核准</div>
+          <div class="process-arrow" aria-hidden="true">↓</div>
+          <div class="process-step">4. 執行工具，取得結果或錯誤訊息</div>
+          <div class="process-arrow" aria-hidden="true">↓</div>
+          <div class="process-step">5. 檢查結果：未完成且仍在限制內，回到第 2 步調整</div>
+          <div class="process-arrow" aria-hidden="true">↓</div>
+          <div class="process-step">6. 完成則回報；缺資料、失敗或達到上限則停止並請求協助</div>
+        </div>
+        <p>流程中的循環不能無限持續。系統應設定最大步數、時間或費用限制；遇到工具故障或證據不足，也應明確說明，而非假裝任務已完成。</p>
+        <p>以上以常見的模型與工具循環作入門說明，可參考 <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic 的代理人架構介紹</a>；反思設計的研究例子見 <a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener noreferrer">Reflexion 論文</a>。</p>
+        <p>
+          代理人能做什麼，取決於實際串接的工具、資料與權限，並非只靠一段指令就能操作所有系統。</p>
+
+        <!-- 在此加入流程圖、示意圖或比較表 -->
+      </section>
+
+      <section>
+        <h2>4. 實際應用案例</h2>
+        <p>以下是「協助客服處理配送延遲」的設計情境，並非特定公司的導入成效報告。顧客詢問：「我的訂單還沒到，可以幫我查嗎？」
+        </p>
+        <ol>
+          <li>先完成身分與訂單存取權限確認；若缺訂單編號，就向顧客詢問。</li>
+          <li>使用訂單查詢工具取得出貨資訊，再使用物流查詢工具確認配送狀態。</li>
+          <li>若物流顯示延遲，查閱相關客服規範，整理目前狀態、查詢時間與可採取的選項。</li>
+          <li>檢查回覆是否與工具結果一致；查不到資料時，明確回報並轉交客服。</li>
+          <li>若涉及退款或更改收件地址，交由有權人員確認，再由受控系統執行。</li>
+        </ol>
+        <p>
+          這個例子中，LLM 協助理解與整理，工具提供實際資料，代理人流程串接多個步驟；重要變更仍由人工把關。</p>
+      </section>
+
+      <section>
+        <h2>5. 優勢與限制</h2>
+
+        <h3>優勢</h3>
+        <p>能依執行結果調整下一步，適合步驟不完全固定的任務。
+        </p>
+        <ul>
+          <li>可串接資料查詢與後續處理，減少重複操作。</li>
+          <li>可利用外部工具取得資料，補足單靠模型生成文字的不足。</li>
+          <li>保留工具結果與執行紀錄時，有助於追查處理過程。</li>
+        </ul>
+        <p>是否能提升效率，仍須用實際任務的成功率、耗時與費用評估。</p>
+        <h3>限制</h3>
+        <p>代理人可能誤解目標、選錯工具或產生不正確的回覆；多步執行也可能累積錯誤。
+        </p>
+        <ul>
+          <li>反覆呼叫模型與工具會增加延遲與費用，規劃及反思不能保證正確。</li>
+          <li>工具失效、資料過時或權限不足，可能讓任務無法完成。</li>
+          <li>外部文件可能夾帶誘導系統偏離任務的指令，稱為提示注入（Prompt Injection）；應把外部內容當成資料，並限制可執行操作。</li>
+          <li>應只提供完成任務所需的最少權限，保護個人與機敏資料，並讓退款、刪除等重要操作經過人工確認。</li>
+          <li>應設定停止條件與失敗轉交方式，並以工具紀錄、規則或人工查核驗證結果。</li>
+        </ul>
+        <p>
+          對步驟固定、容易寫成規則的工作，可以先採用簡單流程；需要高度可靠性的情境，不能只依賴代理人自我檢查。</p>
+      </section>
+
+      <section>
+        <h2>6. 延伸學習</h2>
+        <p>建議先理解 LLM 如何生成內容，再練習辨別「生成建議」與「執行外部動作」的差異。閱讀研究時，也要注意實驗條件，不要把特定測試成績當成所有任務的保證。
+        </p>
+        <ul>
+          <li><a href="llm.html">大型語言模型（LLM）</a>：認識代理人常用的模型基礎。</li>
+          <li><a href="prompt-engineering.html">提示詞工程（Prompt Engineering）</a>：學習描述任務、限制與輸出格式。</li>
+          <li><a href="rag.html">檢索增強生成（RAG）</a>：了解如何提供外部資料；它可作為代理人的查詢能力之一。</li>
+          <li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer">Building effective agents（Anthropic）</a>：比較固定流程與代理人架構。</li>
+          <li><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener noreferrer">Reflexion: Language Agents with Verbal Reinforcement Learning</a>：了解以文字回饋改善後續嘗試的研究設計。</li>
+        </ul>
+        <p>
+          入門練習：畫出一個只能讀取資料的訂單查詢流程，標出工具失敗、缺少資訊與需要人工協助時的出口。</p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="container">
+
+    <p>© 2026 Generative AI Knowledge Hub</p>
+
+    <a href="../index.html">返回首頁</a>
+
+  </footer>
+
+</body>
+</html>
